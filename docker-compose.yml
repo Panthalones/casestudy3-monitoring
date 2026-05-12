@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - api
+
+  api:
+    build: ./api
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./data:/data
+
+  collector:
+    build: ./collector
+    volumes:
+      - ./data:/data

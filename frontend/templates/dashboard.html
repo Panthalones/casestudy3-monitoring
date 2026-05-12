@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Monitoring Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Monitoring Dashboard</h1>
+
+<div class="card">
+    <p>CPU Usage: {{ data.cpu }}</p>
+</div>
+
+<div class="card">
+    <p>Memory Usage: {{ data.memory }}</p>
+</div>
+
+<div class="card">
+    <p>Disk Usage: {{ data.disk }}</p>
+</div>
+
+<div class="card">
+    <p>Status: {{ data.status }}</p>
+</div>
+
+<div class="card">
+    <p>Last Updated: {{ data.last_updated }}</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build frontend image
+        run: docker build -t casestudy3-frontend ./frontend
+
+      - name: Build api image
+        run: docker build -t casestudy3-api ./api
+
+      - name: Build collector image
+        run: docker build -t casestudy3-collector ./collector
+
+      - name: Test Docker Compose configuration
+        run: docker compose config
