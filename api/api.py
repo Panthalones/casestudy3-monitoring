@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request 
+from flask import Flask, jsonify, request
 import json
 import os
 
@@ -6,16 +6,7 @@ app = Flask(__name__)
 
 DATA_FILE = os.getenv("DATA_FILE", "/data/monitoring.json")
 
-@app.route("/api/monitoring", methods=["POST"])
-def update_monitoring_data():
-    data = request.get_json()
-
-    with open(DATA_FILE, "w") as file:
-        json.dump(data, file, indent=4)
-
-    return jsonify({"message": "Monitoring data updated"})
-
-@app.route("/api/monitoring")
+@app.route("/api/monitoring", methods=["GET"])
 def get_monitoring_data():
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as file:
