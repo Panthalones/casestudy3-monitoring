@@ -1,34 +1,22 @@
-import json
 import random
 import time
 from datetime import datetime
-import docker
+import requests
+import os
 
-DATA_FILE = "/data/monitoring.json"
-
-client = docker.from_env()
+API_URL = os.getenv("API_URL")
 
 while True:
-    containers = []
-
-    for container in client.containers.list(all=True):
-        containers.append({
-            "name": container.name,
-            "status": container.status,
-            "image": container.image.tags[0] if container.image.tags else "unknown"
-        })
-
     data = {
         "cpu": f"{random.randint(10, 90)}%",
         "memory": f"{random.randint(20, 95)}%",
         "disk": f"{random.randint(30, 80)}%",
-        "status": "Running",
+        "status": "Running from Azure Collector",
         "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "containers": containers
+        "containers": []
     }
 
-    with open(DATA_FILE, "w") as file:
-        json.dump(data, file, indent=4)
+    response = requests.post(API_URL, json=data, timeout=10)
 
-    print("Monitoring data updated with container information")
+    print("Sent monitoring data:", response.status_code)
     time.sleep(5)
