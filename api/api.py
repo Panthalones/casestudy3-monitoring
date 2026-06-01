@@ -32,5 +32,14 @@ def get_monitoring_data():
 
     return jsonify(data)
 
+@app.route("/api/monitoring", methods=["POST"])
+def update_monitoring_data():
+    data = request.get_json()
+
+    with open(DATA_FILE, "w") as file:
+        json.dump(data, file, indent=4)
+
+    return jsonify({"message": "Monitoring data updated"})
+
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=5001)
