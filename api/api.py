@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-DATA_FILE = os.getenv("DATA_FILE", "/data/monitoring.json")
+DATA_FILE = os.getenv("DATA_FILE", "/tmp/monitoring.json")
 
 @app.route("/api/monitoring", methods=["GET"])
 def get_monitoring_data():
