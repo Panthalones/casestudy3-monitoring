@@ -18,5 +18,5 @@ while True:
 
     response = requests.post(API_URL, json=data, timeout=10)
 
-    print("Sent monitoring data:", response.status_code)
+    print("Sent monitoring data:", response.status_code, flush=True)
     time.sleep(5)
