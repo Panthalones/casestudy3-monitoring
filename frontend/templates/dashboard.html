@@ -26,5 +26,22 @@
 <div class="card">
     <p>Last Updated: {{ data.last_updated }}</p>
 </div>
+
+<h2>Container Status</h2>
+
+{% if data.containers %}
+    {% for container in data.containers %}
+        <div class="card">
+            <p><strong>Name:</strong> {{ container.name }}</p>
+            <p><strong>Status:</strong> {{ container.status }}</p>
+            <p><strong>Image:</strong> {{ container.image }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>No container data available yet.</p>
+    </div>
+{% endif %}
+
 </body>
 </html>

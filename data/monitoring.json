@@ -1,7 +1,49 @@
 {
-    "cpu": "41%",
-    "memory": "25%",
-    "disk": "54%",
+    "cpu": "33%",
+    "memory": "29%",
+    "disk": "64%",
     "status": "Running",
-    "last_updated": "2026-05-12 09:04:46"
+    "last_updated": "2026-05-19 13:40:02",
+    "containers": [
+        {
+            "name": "casestudy3-monitoring-frontend-1",
+            "status": "running",
+            "image": "casestudy3-monitoring-frontend:latest"
+        },
+        {
+            "name": "casestudy3-monitoring-collector-1",
+            "status": "running",
+            "image": "casestudy3-monitoring-collector:latest"
+        },
+        {
+            "name": "casestudy3-monitoring-api-1",
+            "status": "running",
+            "image": "casestudy3-monitoring-api:latest"
+        },
+        {
+            "name": "elegant_wilson",
+            "status": "exited",
+            "image": "mysql:latest"
+        },
+        {
+            "name": "suspicious_dhawan",
+            "status": "exited",
+            "image": "ubuntu:latest"
+        },
+        {
+            "name": "serene_lovelace",
+            "status": "exited",
+            "image": "nginx:latest"
+        },
+        {
+            "name": "angry_taussig",
+            "status": "exited",
+            "image": "nginx:latest"
+        },
+        {
+            "name": "romantic_colden",
+            "status": "exited",
+            "image": "hello-world:latest"
+        }
+    ]
 }
